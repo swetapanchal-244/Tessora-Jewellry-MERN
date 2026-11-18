@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #fdf1f3;
+  /* page background, light pink */
+  --color-champagne: #f6dce1;
+  /* alternate sections */
+  --color-blush: #eeb9c4;
+  /* soft pink accent */
+  --color-rosegold: #a63a58;
+  /* deep rose (main accent) */
+  --color-wine: #5c1a33;
+  /* darkest rose */
+  --color-softgold: #c19a4b;
+  /* gold */
+  --color-silver: #8a8f98;
+  --color-charcoal: #2e1620;
+  /* deep plum text */
+
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Jost", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+/* Rose button with gold shimmer */
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #c24a6a, #8f2745);
+  color: #fff;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  padding: 0.95rem 2.2rem;
+  border-radius: 999px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -10px rgba(143, 39, 69, 0.6);
+}
+
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  to {
+    left: 160%;
+  }
+}
+
+.btn-outline {
+  border: 1px solid var(--color-rosegold);
+  color: var(--color-rosegold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  padding: 0.95rem 2.2rem;
+  border-radius: 999px;
+  transition: all 0.3s;
+}
+
+.btn-outline:hover {
+  background: var(--color-rosegold);
+  color: #fff;
+}
+
+/* Shiny gold text */
+.text-shine {
+  background: linear-gradient(110deg, #b88a35 20%, #f3dc9a 45%, #b88a35 70%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: textshine 4s linear infinite;
+}
+
+@keyframes textshine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Sparkle */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.6) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(45deg);
+  }
+}
+
+.sparkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Moving gradient (banner) */
+.bg-animate {
+  background-size: 200% 200%;
+  animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Card shine sweep */
+.shine-card {
+  position: relative;
+}
+
+.shine-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  transform: skewX(-20deg);
+  z-index: 5;
+  pointer-events: none;
+  transition: left 0.9s ease;
+}
+
+.group:hover .shine-card::before {
+  left: 150%;
+}
+
+/* Floating gems */
+@keyframes floaty {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-22px) rotate(15deg);
+  }
+}
+
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-rosegold), var(--color-softgold));
+  border-radius: 10px;
+}
